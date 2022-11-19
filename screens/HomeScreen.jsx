@@ -11,12 +11,13 @@ export const HomeScreen = ({navigation}) => {
 
     const fetchPosts = () => {
         setIsLoading(true)
-        axios.get('https://6377eea30992902a2514003b.mockapi.io/articles')
+        axios.get('https://api.spaceflightnewsapi.net/v3/articles')
             .then(({data}) => {
                 setItems(data)
+                console.log(data)
             }).catch((err) => {
             console.log(err);
-            Alert.alert('Ошибка', 'Не удалось получить статьи')
+            Alert.alert('Error', 'Server error')
         })
             .finally(() => {
                 setIsLoading(false)
@@ -39,7 +40,7 @@ export const HomeScreen = ({navigation}) => {
                         <Post
                             title={item.title}
                             imageUrl={item.imageUrl}
-                            createdAt={item.createdAt}
+                            updatedAt={item.updatedAt}
                         />
                     </TouchableOpacity>
                 )}/>

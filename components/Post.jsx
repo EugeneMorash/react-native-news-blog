@@ -38,14 +38,14 @@ const truncateTitle = (str) => {
     return str;
 }
 
-export const Post = ({title, imageUrl, createdAt}) => {
+export const Post = ({title, imageUrl, updatedAt}) => {
     return (
         <View>
             <PostView>
                 <PostImage source={{uri: imageUrl}}/>
                 <PostDetails>
                     <PostTitle>{truncateTitle(title)}</PostTitle>
-                    <PostDate>{new Date(createdAt).toLocaleString()}</PostDate>
+                    <PostDate>{updatedAt.substring(0, 10)}</PostDate>
                     {/*date-fns => format*/}
                 </PostDetails>
             </PostView>

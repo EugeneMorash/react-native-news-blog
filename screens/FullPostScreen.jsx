@@ -26,12 +26,12 @@ export function FullPostScreen({route, navigation}) {
         navigation.setOptions({
             title
         })
-        axios.get('https://6377eea30992902a2514003b.mockapi.io/articles/' + id)
+        axios.get('https://api.spaceflightnewsapi.net/v3/articles/' + id)
             .then(({data}) => {
                 setData(data)
             }).catch((err) => {
             console.log(err);
-            Alert.alert('Ошибка', 'Не удалось получить статью')
+            Alert.alert('Error', 'No article')
         })
             .finally(() => {
                 setIsLoading(false)
@@ -46,7 +46,7 @@ export function FullPostScreen({route, navigation}) {
         <View style={{padding: 15}}>
             <PostImage source={{uri: data.imageUrl}}/>
             <PostText>
-                {data.text}
+                {data.summary}
             </PostText>
         </View>
     );
